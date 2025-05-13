@@ -1,0 +1,11 @@
+README.md
+pyproject.toml
+setup.py
+clai/__init__.py
+clai/clai.py
+clai.egg-info/PKG-INFO
+clai.egg-info/SOURCES.txt
+clai.egg-info/dependency_links.txt
+clai.egg-info/entry_points.txt
+clai.egg-info/requires.txt
+clai.egg-info/top_level.txt

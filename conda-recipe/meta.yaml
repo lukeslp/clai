@@ -1,0 +1,26 @@
+package:
+  name: clai
+  version: "0.1.0"
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
+
+requirements:
+  host:
+    - python >=3.7
+    - pip
+  run:
+    - python >=3.7
+    - colorama
+    - rich
+    - requests
+
+about:
+  home: https://actuallyusefulai.com
+  license: MIT
+  summary: "A natural-language to shell/Python CLI assistant using local Ollama models."
+  author: "Luke Steuber"
