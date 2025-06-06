@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 """
-ollama_tool_user.py
+llamaline.py
+
+File Purpose: Main CLI module for the llamaline package - a natural-language to shell/Python assistant
+Primary Functions/Classes: 
+  - Tools: Executor class for Python and bash commands
+  - OllamaChat: Interface for interacting with local Ollama models
+  - main(): CLI entry point and interactive loop
+Inputs and Outputs (I/O):
+  - Input: Natural language prompts from user
+  - Output: Executed code results (Python/bash) with colored console output
 
 A CLI tool that uses a local Ollama model (gemma3:4b) to interpret natural-language prompts,
 select between Python and shell execution tools, generate the needed code/command,
