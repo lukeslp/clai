@@ -39,6 +39,42 @@ coverage.xml
 
 # Jupyter Notebook
 .ipynb_checkpoints
+# Ignore common binary and document formats
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.svg
+*.webp
+
+# Office and document files
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+*.odt
+*.ods
+*.odp
+*.rtf
+
+# Other image/document formats
+*.ico
+*.heic
+*.eps
+*.psd
+*.ai
+
+# Archives (optional, but often included with binary/doc ignores)
+*.zip
+*.tar
+*.tar.gz
+*.rar
+*.7z
 
 # pyenv
 .python-version
