@@ -49,6 +49,7 @@ coverage.xml
 *.svg
 *.webp
 
+*.db
 # Office and document files
 *.pdf
 *.doc
