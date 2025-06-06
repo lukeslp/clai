@@ -23,13 +23,22 @@ Transform your everyday tasks into simple English commands! llamaline bridges th
 
 ## Installation
 
+### Via Conda (Recommended)
 ```bash
+conda install -c conda-forge llamaline
+```
+
+### Via Pip
+```bash
+git clone https://github.com/lukeslp/llamaline.git
+cd llamaline
 pip install .
 ```
 
-Or, for development:
-
+### Development Installation
 ```bash
+git clone https://github.com/lukeslp/llamaline.git
+cd llamaline
 pip install -e .
 ```
 
