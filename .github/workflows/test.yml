@@ -1,0 +1,112 @@
+name: Test and Validate
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    name: Test on Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11', '3.12']
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+        
+    - name: Test CLI entry point
+      run: |
+        llamaline --help
+        
+    - name: Test package import
+      run: |
+        python -c "import llamaline; print('Package imported successfully')"
+        
+    - name: Test basic functionality (no Ollama required)
+      run: |
+        python -c "
+        from llamaline.llamaline import Tools
+        import asyncio
+        tools = Tools()
+        result = asyncio.run(tools.run_python_code('print(\"Hello from llamaline\")'))
+        print('Test result:', result)
+        assert 'Hello from llamaline' in result
+        "
+
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+        
+    - name: Install build dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install build twine
+        
+    - name: Build package
+      run: |
+        python -m build
+        
+    - name: Check package
+      run: |
+        twine check dist/*
+        
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: dist-${{ github.sha }}
+        path: dist/
+        retention-days: 7
+
+  lint:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+        
+    - name: Install linting tools
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8 black isort
+        
+    - name: Check code formatting with black
+      run: |
+        black --check --diff llamaline/
+        
+    - name: Check import sorting with isort
+      run: |
+        isort --check-only --diff llamaline/
+        
+    - name: Lint with flake8
+      run: |
+        flake8 llamaline/ --max-line-length=100 --ignore=E203,W503 

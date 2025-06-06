@@ -1,0 +1,43 @@
+package:
+  name: llamaline
+  version: "1.0.0"
+
+source:
+  path: ..
+
+build:
+  noarch: python
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv"
+  entry_points:
+    - llamaline = llamaline.llamaline:main
+
+requirements:
+  host:
+    - python >=3.7
+    - pip
+  run:
+    - python >=3.7
+    - colorama
+    - rich
+    - requests
+
+about:
+  home: https://github.com/lukeslp/llamaline
+  dev_url: https://github.com/lukeslp/llamaline
+  doc_url: https://github.com/lukeslp/llamaline#readme
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: "A natural-language to shell/Python CLI assistant using local Ollama models."
+  description: |
+    llamaline transforms everyday tasks into simple English commands! 
+    It bridges the gap between natural language and code execution, 
+    making command-line operations accessible to everyone with comprehensive 
+    safety features and accessibility support.
+  author: "Luke Steuber"
+  author_email: "luke@lukesteuber.com"
+
+extra:
+  recipe-maintainers:
+    - lukeslp

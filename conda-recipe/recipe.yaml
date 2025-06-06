@@ -1,0 +1,62 @@
+# Modern conda-forge recipe for llamaline v1.0.0
+# This is the new recipe.yaml format preferred by conda-forge
+
+context:
+  version: "1.0.0"
+
+package:
+  name: llamaline
+  version: ${{ version }}
+
+source:
+  url: https://github.com/lukeslp/llamaline/archive/v${{ version }}.tar.gz
+  sha256: REPLACE_WITH_ACTUAL_SHA256
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . --no-deps --ignore-installed -vv
+  entry_points:
+    - llamaline = llamaline.llamaline:main
+
+requirements:
+  host:
+    - python >=3.7
+    - pip
+    - setuptools
+  run:
+    - python >=3.7
+    - colorama
+    - rich
+    - requests
+
+test:
+  imports:
+    - llamaline
+  commands:
+    - llamaline --help
+
+about:
+  home: https://github.com/lukeslp/llamaline
+  dev_url: https://github.com/lukeslp/llamaline
+  doc_url: https://github.com/lukeslp/llamaline#readme
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A natural-language to shell/Python CLI assistant using local Ollama models
+  description: |
+    llamaline transforms everyday tasks into simple English commands! 
+    It bridges the gap between natural language and code execution, 
+    making command-line operations accessible to everyone with comprehensive 
+    safety features and accessibility support.
+    
+    Features:
+    - Natural language to code translation
+    - Interactive CLI with rich styling
+    - Built-in safety features and confirmation prompts
+    - Accessibility-focused design
+    - Support for both Python and bash execution
+
+extra:
+  recipe-maintainers:
+    - lukeslp 

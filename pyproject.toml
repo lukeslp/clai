@@ -1,0 +1,49 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "llamaline"
+version = "1.0.0"
+description = "A natural-language to shell/Python CLI assistant using local Ollama models."
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "Luke Steuber", email = "luke@lukesteuber.com"}
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: System Shells",
+    "Topic :: Utilities",
+]
+keywords = ["cli", "natural-language", "ollama", "accessibility", "automation"]
+requires-python = ">=3.7"
+dependencies = [
+    "colorama",
+    "rich",
+    "requests",
+]
+
+[project.urls]
+Homepage = "https://github.com/lukeslp/llamaline"
+Documentation = "https://github.com/lukeslp/llamaline#readme"
+Repository = "https://github.com/lukeslp/llamaline"
+"Bug Tracker" = "https://github.com/lukeslp/llamaline/issues"
+
+[project.scripts]
+llamaline = "llamaline.llamaline:main"
+
+[tool.setuptools.packages.find]
+include = ["llamaline*"] 
