@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="llamaline",
-    version="0.1.0",
+    version="1.0.0",
     description="A natural-language to shell/Python CLI assistant using local Ollama models.",
     author="Luke Steuber",
     author_email="luke@actuallyusefulai.com",
