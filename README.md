@@ -45,4 +45,13 @@ clai
 - Local Ollama server running (see project plan for details)
 
 ## Development
-- See `PROJECT_PLAN.md` for roadmap and contribution guidelines. 
+- See `PROJECT_PLAN.md` for roadmap and contribution guidelines.
+
+## Community & Support
+Have fun tinkering with **clai**? Show some love!
+
+- GitHub: [lukeslp](https://github.com/lukeslp)
+- Substack: [lukesteuber.substack.com](https://lukesteuber.substack.com/)
+- Tip jar: <https://usefulai.lemonsqueezy.com/buy/bf6ce1bd-85f5-4a09-ba10-191a670f74af>
+
+Licensed under the MIT License by Luke Steuber. See [LICENSE](LICENSE) for details.
