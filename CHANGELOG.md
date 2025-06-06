@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.0.2] - 2024-12-19 - CI/CD Fixes and PyPI Release 🚀
+
+### 🛠 CI/CD Fixes
+- **GitHub Actions**: Fixed workflow branch triggers to support master branch
+- **Test Workflows**: Updated test matrix to run on correct branches
+- **Release Automation**: Streamlined release process for PyPI publishing
+- **Version Synchronization**: Updated all version references to 1.0.2
+
+### 🚀 PyPI Deployment
+- **Automated Publishing**: GitHub Actions workflow configured for PyPI
+- **Package Validation**: Enhanced testing pipeline before release
+- **Distribution**: Ready for automated PyPI publishing via OIDC
+
+---
+
 ## [1.0.1] - 2024-12-19 - Bug Fixes and CI/CD Improvements 🔧
 
 ### 🛠 Bug Fixes

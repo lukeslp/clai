@@ -3,7 +3,7 @@
 
 set -e
 
-echo "🧪 Testing llamaline v1.0.1 Package"
+echo "🧪 Testing llamaline v1.0.2 Package"
 echo "===================================="
 
 # Clean previous builds
@@ -20,7 +20,7 @@ twine check dist/*
 
 # Test installation in a temporary location
 echo "🔧 Testing installation..."
-pip install dist/llamaline-1.0.1-py3-none-any.whl --force-reinstall
+pip install dist/llamaline-1.0.2-py3-none-any.whl --force-reinstall
 
 # Test CLI functionality
 echo "🎯 Testing CLI functionality..."
@@ -34,9 +34,9 @@ python -c "
 from llamaline.llamaline import Tools
 import asyncio
 tools = Tools()
-result = asyncio.run(tools.run_python_code('print(\"Hello from llamaline v1.0.1\")'))
+result = asyncio.run(tools.run_python_code('print(\"Hello from llamaline v1.0.2\")'))
 print('✅ Test result:', result)
-assert 'Hello from llamaline v1.0.1' in result
+assert 'Hello from llamaline v1.0.2' in result
 print('✅ All tests passed!')
 "
 

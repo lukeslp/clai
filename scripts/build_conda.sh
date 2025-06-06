@@ -4,7 +4,7 @@
 
 set -e
 
-echo "🦙 Building llamaline v1.0.1 Conda Package"
+echo "🦙 Building llamaline v1.0.2 Conda Package"
 echo "=========================================="
 
 # Set up conda paths
@@ -58,7 +58,7 @@ echo "To install locally:"
 echo "  $CONDA_CMD install -c ./conda-dist/ llamaline"
 echo ""
 echo "To upload to anaconda.org (requires anaconda-client):"
-echo "  anaconda upload ./conda-dist/noarch/llamaline-1.0.1-py_0.tar.bz2"
+echo "  anaconda upload ./conda-dist/noarch/llamaline-1.0.2-py_0.tar.bz2"
 echo ""
 echo "To upload to conda-forge:"
 echo "  1. Fork https://github.com/conda-forge/staged-recipes"
