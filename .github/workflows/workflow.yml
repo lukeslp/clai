@@ -1,29 +1,18 @@
-/**
- * GitHub Actions Workflow: Publish clai to PyPI via OIDC
- *
- * This workflow automates the process of building and publishing the `clai` package to PyPI
- * whenever a new version tag (vX.Y.Z) is pushed to the repository. It uses OIDC for secure
- * authentication, eliminating the need for a PyPI token in repository secrets.
- *
- * Accessibility & Maintenance Notes:
- * - No user interaction required; fully automated.
- * - All build and publish steps are logged in the Actions UI for transparency.
- * - The workflow file is placed in `.github/workflows/workflow.yml` for discoverability.
- * - Consider documenting this workflow in your README.md and CHANGELOG.md.
- *
- * Alternative: For more granular control, consider splitting build and publish into separate workflows.
- */
+# GitHub Actions Workflow: Publish llamaline to PyPI via OIDC
+#
+# This workflow automates the process of building and publishing the llamaline package to PyPI
+# whenever a new version tag (vX.Y.Z) is pushed to the repository. It uses OIDC for secure
+# authentication, eliminating the need for a PyPI token in repository secrets.
+#
+# Accessibility & Maintenance Notes:
+# - No user interaction required; fully automated.
+# - All build and publish steps are logged in the Actions UI for transparency.
+# - The workflow file is placed in .github/workflows/workflow.yml for discoverability.
+# - Consider documenting this workflow in your README.md and CHANGELOG.md.
+#
+# Alternative: For more granular control, consider splitting build and publish into separate workflows.
 
-const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
-
-// Ensure .github/workflows directory exists
-fs.mkdirSync('.github/workflows', { recursive: true });
-
-// Define the workflow YAML content
-const workflowYml = `
-name: Publish clai to PyPI
+name: Publish llamaline to PyPI
 
 on:
   push:
@@ -69,33 +58,3 @@ jobs:
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           # no token needed—OIDC will handle it
-`;
-
-// Write the workflow YAML to the correct location
-fs.writeFileSync(
-  path.join('.github', 'workflows', 'workflow.yml'),
-  workflowYml.trimStart(),
-  { encoding: 'utf8' }
-);
-
-// Stage the new workflow file
-execSync('git add .github/workflows/workflow.yml', { stdio: 'inherit' });
-
-// Commit the workflow file
-execSync('git commit -m "chore: add GitHub Actions workflow for PyPI OIDC publishing"', { stdio: 'inherit' });
-
-// Push to main branch (change 'main' if your default branch is different)
-execSync('git push origin main', { stdio: 'inherit' });
-
-/**
- * Documentation Updates:
- * - Add a section to your README.md describing the automated PyPI publishing workflow.
- * - Update CHANGELOG.md to reflect the addition of CI/CD for releases.
- *
- * Accessibility Considerations:
- * - All steps are automated and require no manual intervention.
- * - Logs are accessible via the GitHub Actions UI.
- *
- * Alternative Approach:
- * - For monorepos or multi-package setups, consider parameterizing the workflow or using matrix builds.
- */

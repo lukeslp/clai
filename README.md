@@ -48,7 +48,7 @@ llamaline
 - See `PROJECT_PLAN.md` for roadmap and contribution guidelines.
 
 ## Community & Support
-Have fun tinkering with **clai**? Show some love!
+Have fun tinkering with **llamaline**? Show some love!
 
 - GitHub: [lukeslp](https://github.com/lukeslp)
 - Substack: [lukesteuber.substack.com](https://lukesteuber.substack.com/)
