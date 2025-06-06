@@ -1,5 +1,27 @@
 # Changelog
 
+## [1.0.1] - 2024-12-19 - Bug Fixes and CI/CD Improvements 🔧
+
+### 🛠 Bug Fixes
+- **Conda Recipe**: Removed LICENSE file references that were causing build failures
+- **Permission Issues**: Fixed git permission conflicts between root and regular user
+- **Version Synchronization**: Updated all version references to 1.0.1
+- **Build System**: Removed setup.py conflicts with pyproject.toml
+
+### 🚀 Improvements
+- **Test Validation**: Added comprehensive `scripts/test_package.sh` script
+- **CI/CD Workflows**: Enhanced GitHub Actions with better error handling
+- **Package Building**: Streamlined build process with proper validation
+- **Documentation**: Added workflow summary and troubleshooting guides
+
+### ✅ Validation
+- Package builds successfully with `python -m build`
+- Passes `twine check` validation
+- CLI functionality confirmed working
+- Import and basic functionality tested
+
+---
+
 ## [1.0.0] - 2024-12-19 - First Stable Release 🎉
 
 ### 🚀 New Features

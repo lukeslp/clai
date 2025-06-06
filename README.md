@@ -127,13 +127,35 @@ cd llamaline
 pip install -e .
 ```
 
+### Development Scripts
+
+The `scripts/` folder contains helpful automation scripts:
+
+```bash
+# Test package build and functionality
+./scripts/test_package.sh
+
+# Create GitHub release (requires git tag)
+./scripts/release.sh
+
+# Build conda package (requires conda-build)
+./scripts/build_conda.sh
+```
+
 ### Project Structure
 ```
 llamaline/
 ├── llamaline/
 │   ├── __init__.py
 │   └── llamaline.py      # Main CLI module
-├── setup.py              # Package configuration
+├── scripts/
+│   ├── build_conda.sh    # Conda package building
+│   ├── release.sh        # GitHub release automation
+│   └── test_package.sh   # Package validation testing
+├── conda-recipe/
+│   ├── meta.yaml         # Traditional conda recipe
+│   └── recipe.yaml       # Modern conda-forge recipe
+├── pyproject.toml        # Package configuration
 ├── requirements.txt      # Dependencies
 ├── PROJECT_PLAN.md       # Roadmap and architecture
 └── README.md            # This file

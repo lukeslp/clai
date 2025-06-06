@@ -1,1 +1,1 @@
-{"info":{"subdir":"noarch"},"packages":{},"packages.conda":{},"removed":[],"repodata_version":1}
+{"info":{"subdir":"noarch"},"packages":{},"packages.conda":{"llamaline-1.0.1-py_0.conda":{"build":"py_0","build_number":0,"depends":["colorama","python >=3.7","requests","rich"],"license":"MIT","license_family":"MIT","md5":"9f05a9b102b1e96a034f0de7fa050718","name":"llamaline","noarch":"python","sha256":"f4a4fa4d951a219d7c356fc948e6e9f40b866a2e90b99712e1fd5d5ba9e4226d","size":12925,"subdir":"noarch","timestamp":1749238219332,"version":"1.0.1"}},"removed":[],"repodata_version":1}
