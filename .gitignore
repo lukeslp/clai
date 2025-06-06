@@ -1,24 +1,27 @@
-# .gitignore for llamaline Python package project
+# .gitignore for CleanupX Python Package
+# Comprehensive patterns for Python development and distribution
 
-# Project-specific temporary files and caches
-cache/
-output/
-test/
+# Project-specific build artifacts and temporary directories
+highres*
 _METHODS/
 scraps/
 snippets/
-storage/
+cache/
+output/
 inbox/
-highres*
+conda-dist/
+.conda-build/
+storage/
 
-# Python bytecode and compilation artifacts
+# Python bytecode and compiled files
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.pyd
+*.pyo
 
-# Distribution / packaging
-.Python
+# Distribution and packaging
 build/
 develop-eggs/
 dist/
@@ -31,47 +34,101 @@ parts/
 sdist/
 var/
 wheels/
+share/python-wheels/
 *.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
+*.whl
 
-# Conda distribution artifacts
-conda-dist/
-conda-build/
-*.tar.bz2
+# PyInstaller
+*.manifest
+*.spec
 
 # Virtual environments
 venv/
 fresh_venv/
+.cursor/
 ENV/
 env/
 .env/
 .venv/
-.conda/
+pyvenv.cfg
 
-# Environment variables and configuration
+# Environment variables and secrets
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+*.key
+*.pem
+*.crt
+secrets.json
 
-# IDE specific files
+# IDE and editor files
 .idea/
 .vscode/
-.cursor/
 *.swp
 *.swo
+*~
 .spyderproject
 .spyproject
 .ropeproject
+.project
+.pydevproject
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# Testing and coverage
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.cache
+.pytest_cache/
+.hypothesis/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# Documentation builds
+docs/_build/
+docs/build/
+site/
+
+# MyPy type checker
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# Profiling
+.prof
+
+# Logs
+*.log
+logs/
+pip-log.txt
+pip-delete-this-directory.txt
 
 # macOS specific files
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
+Icon?
 ._*
 .DocumentRevisions-V100
 .fseventsd
@@ -81,95 +138,64 @@ Icon
 .VolumeIcon.icns
 .com.apple.timemachine.donotpresent
 
-# Testing and coverage
-.coverage
-.coverage.*
-htmlcov/
-.tox/
-.nox/
-.hypothesis/
-.pytest_cache/
-nosetests.xml
-coverage.xml
-*.cover
-.cache
+# Windows specific files
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
 
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Logs
-*.log
-logs/
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Python type checking
-.mypy_cache/
-.dmypy.json
-dmypy.json
-.pytype/
-
-# Python version management
-.python-version
-
-# Documentation builds
-docs/_build/
-docs/build/
-.readthedocs.yml
+# Linux specific files
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
 
 # Temporary files
 *.tmp
 *.temp
-*~
+*.bak
+*.swp
+*.swo
 .#*
-
-# Binary and media files (optional exclusions)
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.bmp
-*.tiff
-*.svg
-*.webp
-*.ico
-*.heic
-*.eps
-*.psd
-*.ai
+#*#
 
 # Database files
 *.db
 *.sqlite
 *.sqlite3
 
-# Office and document files
-*.pdf
-*.doc
-*.docx
-*.xls
-*.xlsx
-*.ppt
-*.pptx
-*.odt
-*.ods
-*.odp
-*.rtf
+# Git and version control
+.git/
+*.orig
+*.rej
 
-# Archives
-*.zip
-*.tar
-*.tar.gz
-*.rar
-*.7z
+# Package manager files
+Pipfile.lock
+poetry.lock
 
-# Node.js (if any frontend components)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Cloud and deployment
+.serverless/
+.vercel
+.netlify/
 
-# Local development and debugging
-.local/
-debug/
-profile/
+# Local development and experiment files
+scratch/
+experiments/
+playground/
+local/
+
+# User-specific test files and data
+test_output/
+test_results/
+user_data/
+sample_files/
