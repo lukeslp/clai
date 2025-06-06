@@ -70,6 +70,7 @@
 | Feature creep                | Strict phase gating and scope reviews           |
 
 ## 9. Next Steps
-- Review and approve project plan.  
-- Set up repository skeleton and CI pipeline.  
+- Review and approve project plan.
+- Set up repository skeleton and CI pipeline.
 - Kick off Phase 1 development sprint.
+- Document funding links and MIT license in repository.
