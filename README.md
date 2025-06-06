@@ -1,11 +1,11 @@
 ---
-**clai**  
+**llamaline**  
 MIT License  
 Author: Luke Steuber  
 Web: [actuallyusefulai.com](https://actuallyusefulai.com), [lukesteuber.com](https://lukesteuber.com)
 ---
 
-# clai
+# llamaline
 
 A natural-language to shell/Python CLI assistant using local Ollama models.
 
@@ -23,16 +23,16 @@ pip install -e .
 
 ## Usage
 
-After installation, use the `clai` command:
+After installation, use the `llamaline` command:
 
 ```bash
-clai "Show me disk usage"
+llamaline "Show me disk usage"
 ```
 
 Or start the interactive CLI:
 
 ```bash
-clai
+llamaline
 ```
 
 ## Accessibility

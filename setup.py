@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="clai",
+    name="llamaline",
     version="0.1.0",
     description="A natural-language to shell/Python CLI assistant using local Ollama models.",
     author="Luke Steuber",
@@ -16,7 +16,7 @@ setup(
     ],
     entry_points={
         "console_scripts": [
-            "clai=clai.clai:main",
+            "llamaline=llamaline.llamaline:main",
         ],
     },
     python_requires=">=3.7",

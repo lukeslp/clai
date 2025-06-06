@@ -25,7 +25,7 @@ import requests
 import json
 
 # Default parameters
-DEFAULT_DB_PATH = ".clai.db"
+DEFAULT_DB_PATH = ".llamaline.db"
 DEFAULT_EMBEDDING_MODEL = "nomic-embed-text"  # Ollama embedding model
 DEFAULT_CHAT_MODEL = "llama3"  # Ollama chat model
 DEFAULT_ENDPOINT = os.environ.get('OLLAMA_ENDPOINT', 'http://localhost:11434')

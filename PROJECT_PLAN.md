@@ -33,7 +33,7 @@
 10. **Startup Menu Display**  
    - On launch, show an interactive menu listing available commands (`help`, `cheats`, `model`, `quit`, etc.) and overrides.
 11. **Single-Prompt Invocation**  
-   - Accept a natural-language prompt as command-line arguments (`clai <prompt>`) to execute a single command and exit.
+   - Accept a natural-language prompt as command-line arguments (`llamaline <prompt>`) to execute a single command and exit.
 
 ## 4. Phases & Milestones
 
