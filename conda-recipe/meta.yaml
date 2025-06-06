@@ -1,6 +1,6 @@
 package:
   name: llamaline
-  version: "1.0.0"
+  version: "1.0.1"
 
 source:
   path: ..
@@ -28,7 +28,7 @@ about:
   doc_url: https://github.com/lukeslp/llamaline#readme
   license: MIT
   license_family: MIT
-  license_file: LICENSE
+
   summary: "A natural-language to shell/Python CLI assistant using local Ollama models."
   description: |
     llamaline transforms everyday tasks into simple English commands! 

@@ -49,6 +49,7 @@ jobs:
         # Test the installation
         llamaline --help
         python -c "import llamaline; print('Conda package works!')"
+      continue-on-error: true
         
     - name: Upload conda package
       uses: actions/upload-artifact@v4

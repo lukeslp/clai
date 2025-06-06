@@ -22,7 +22,7 @@ fi
 echo "✅ Repository is clean"
 
 # Create and push tag
-TAG="v1.0.0"
+TAG="v1.0.1"
 echo "🏷️  Creating tag: $TAG"
 
 if git tag -l | grep -q "^$TAG$"; then
@@ -31,7 +31,7 @@ if git tag -l | grep -q "^$TAG$"; then
     git push origin :refs/tags/$TAG 2>/dev/null || echo "   (tag didn't exist on remote)"
 fi
 
-git tag -a $TAG -m "Release v1.0.0 - First Stable Release
+git tag -a $TAG -m "Release v1.0.1 - First Stable Release
 
 🚀 Features:
 - Natural language to code translation
