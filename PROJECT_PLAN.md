@@ -1,13 +1,21 @@
-#PROJECT_PLAN FOR LLAMACLI
+"""
+PROJECT_PLAN.md
+
+File Purpose: Technical roadmap and architecture plan for llamaline development
+Primary Sections: Objectives, Features, Architecture, Phases, Risks
+Inputs and Outputs (I/O): Strategic planning document for project direction
+"""
+
+# PROJECT PLAN FOR LLAMACLI
 # PROJECT PLAN FOR LLAMACLI
 
 ## 1. Introduction
-**llamacli** is a user-friendly command-line assistant built on top of a local Ollama model. It translates natural-language prompts into shell commands or Python snippets, executes them securely in the user’s environment, and formats the output for clarity.
+**llamacli** is a user-friendly command-line assistant built on top of a local Ollama model. It translates natural-language prompts into shell commands or Python snippets, executes them securely in the user's environment, and formats the output for clarity.
 
 ## 2. Objectives
 - Lower the barrier for non-expert users to perform common shell and Python tasks.
 - Provide an interactive, guided experience with safety checks and confirmations.
-- Offer extensible “cheat-sheet” shortcuts and wizard prompts for complex operations.
+- Offer extensible "cheat-sheet" shortcuts and wizard prompts for complex operations.
 - Maintain a history of sessions for replay and learning.
 - Support configuration overrides for model, endpoint, and behavior.
 

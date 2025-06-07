@@ -67,7 +67,54 @@ Then type natural language commands:
 - `cheats` - List all cheat sheet shortcuts
 - `model` - Show current Ollama model
 - `model llama2` - Switch to different model
+- `history` - Show command history
+- `clear` - Clear the screen
+- `history` - Show command history
+- `clear` - Clear the screen
 - `quit` - Exit the application
+
+## 📱 Narrow Terminal Support
+
+Llamaline is optimized for terminals of all sizes with responsive design:
+
+### Dynamic Width Detection
+- Automatically adjusts UI elements based on terminal width
+- Text wrapping for long content
+- Responsive panels that resize to match available space
+- Simplified views for narrow terminals
+
+### Terminal Width Behaviors
+- **< 40 chars**: Ultra-compact mode with minimal UI elements
+- **40-50 chars**: Compact mode with essential information
+- **50-60 chars**: Standard mode with most features visible  
+- **> 60 chars**: Full mode with all UI enhancements including splash screen
+
+### Adaptive Features
+- **Cheat Sheet**: Table columns adjust based on width
+- **Code Preview**: Syntax highlighting with optional line numbers
+- **Output Display**: Intelligent truncation for long results
+- **Prompts**: Shortened prompts on narrow terminals
+
+## 🎨 Rich Interactive Features
+
+Llamaline uses the Rich library for comprehensive styling and interactivity:
+
+### Visual Enhancements
+- **Syntax Highlighting**: Color-coded Python and bash code
+- **Progress Indicators**: Animated spinners during operations
+- **Themed Console**: Consistent color scheme throughout
+- **Status Panels**: Clear visual separation of output types
+- **Emoji Icons**: Visual cues (✅ success, ❌ error, ⚡ interrupt)
+
+### Interactive Elements
+- **Rich Prompts**: Styled input with defaults
+- **Confirmation Dialogs**: Clear Y/N prompts
+- **Command History**: View last 10 commands
+- **Live Progress**: Real-time feedback
+- **Error Panels**: Red-bordered error messages
+
+### Responsive Design
+All UI elements automatically adapt to your terminal size, ensuring a great experience whether you're using a mobile SSH client or a full-screen terminal.
 
 ## 🎯 Example Sessions
 
