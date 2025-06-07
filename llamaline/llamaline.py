@@ -110,32 +110,66 @@ def create_responsive_panel(content: str, title: str = "", border_style: str = "
     )
 
 def show_splash_screen():
-    splash_text = '''
-LLAMALINE
-'''
-    # Or your ASCII art, but keep it as a single string
+    """Display an animated splash screen"""
+    terminal_width = get_terminal_width()
+    
+    # Responsive splash for narrow terminals
+    if terminal_width < 50:
+        splash_text = "LLAMALINE"
+    else:
+        splash_text = """╦  ╦  ╔═╗╔╦╗╔═╗╦  ╦╔╗╔╔═╗
+║  ║  ╠═╣║║║╠═╣║  ║║║║║╣ 
+╩═╝╩═╝╩ ╩╩ ╩╩ ╩╩═╝╩╝╚╝╚═╝"""
+    
+    # Center the splash text
     splash = Text(splash_text, style="bold cyan")
-    # Center the splash
     console.print(Align.center(splash))
-
+    console.print()
+    
+    # Center the subtitle
     subtitle = Text("Natural Language → Code", style="dim")
     console.print(Align.center(subtitle))
 
-def show_startup_menu(model, endpoint):
-    info = (
-        f"[bold]Model:[/bold] [yellow]{model}[/yellow]   "
-        f"[bold]Endpoint:[/bold] [yellow]{endpoint}[/yellow]   "
-        f"Commands: [bold]help[/bold] • [bold]cheats[/bold] • [bold]model[/bold] • [bold]quit[/bold]"
-    )
-    # Set panel width to match the splash/banner width
-    panel_width = max(len(line) for line in "LLAMALINE".splitlines()) + 8  # adjust as needed
+def show_startup_menu(model: str, endpoint: str):
+    """Display startup menu with responsive design"""
+    terminal_width = get_terminal_width()
+    
+    # Show splash screen only on wide terminals
+    if terminal_width > 50:
+        show_splash_screen()
+        console.print()
+    
+    # Model and endpoint info
+    info_text = f"Model: [bold yellow]{model}[/bold yellow]"
+    if terminal_width > 60:
+        info_text += f"   Endpoint: [bold yellow]{endpoint}[/bold yellow]"
+    
+    # Quick commands
+    if terminal_width > 40:
+        commands = "Commands: [bold]help[/bold] • [bold]cheats[/bold] • [bold]model[/bold] • [bold]quit[/bold]"
+    else:
+        commands = "Type [bold]help[/bold] for commands"
+    
+    content = f"{info_text}\n{commands}"
+    
+    # Calculate panel width based on content
+    content_lines = content.split('\n')
+    # Remove markup for width calculation
+    import re
+    clean_lines = [re.sub(r'\[.*?\]', '', line) for line in content_lines]
+    max_content_width = max(len(line) for line in clean_lines)
+    
+    # Set panel width to be slightly wider than content but not exceed terminal
+    panel_width = min(max_content_width + 8, terminal_width - 2)
+    
     panel = Panel(
-        info,
-        title=":rocket: Llamaline CLI",
+        content,
+        title="🚀 Llamaline CLI" if terminal_width > 30 else "Llamaline",
         border_style="cyan",
         width=panel_width,
-        expand=False,
+        expand=False
     )
+    
     # Center the panel
     console.print(Align.center(panel))
 
@@ -365,6 +399,74 @@ def display_result(tool: str, result: str) -> None:
         title = "Output"
     
     console.print(create_responsive_panel(result, title=title, border_style=panel_style))
+
+# -----------------------------------------------------------------------------
+# Main CLI with Enhanced Interactivity
+# -----------------------------------------------------------------------------
+async def process_prompt(prompt: str, chat: OllamaChat, tools: Tools) -> None:
+    """Process a single prompt with rich feedback"""
+    # Check for cheat sheet command
+    key = prompt.lower()
+    if key in CHEAT_SHEETS:
+        choice = CHEAT_SHEETS[key]
+        console.print(f"\n[dim]Using cheat sheet: {key}[/dim]")
+    else:
+        # Generate code with progress indicator
+        with Progress(
+            SpinnerColumn(),
+            TextColumn("[progress.description]{task.description}"),
+            transient=True,
+            console=console
+        ) as progress:
+            task = progress.add_task("[cyan]Analyzing prompt and generating code...", total=None)
+            
+            try:
+                choice = chat.select_tool(prompt)
+                progress.update(task, completed=True)
+            except Exception as e:
+                progress.update(task, completed=True)
+                console.print(Panel(
+                    f"Failed to generate code: {str(e)}",
+                    title="❌ Error",
+                    border_style="red"
+                ))
+                return
+
+    tool = choice.get("tool")
+    code = choice.get("code", "")
+    
+    # Display code preview
+    console.print()
+    display_code_preview(tool, code)
+    
+    # Confirmation with Rich prompt
+    console.print()
+    if not Confirm.ask("[prompt]Execute this code?[/prompt]", default=True):
+        console.print("[warning]⚠️  Execution cancelled[/warning]")
+        return
+    
+    # Execute with progress indicator
+    console.print()
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        transient=True,
+        console=console
+    ) as progress:
+        task = progress.add_task(f"[cyan]Running {tool} code...", total=None)
+        
+        if tool == "bash":
+            result = await tools.run_bash_command(code)
+        elif tool == "python":
+            result = await tools.run_python_code(code)
+        else:
+            result = f"Unknown tool: {tool}"
+        
+        progress.update(task, completed=True)
+    
+    # Display results
+    console.print()
+    display_result(tool, result)
 
 def main():
     # Parse command-line overrides
