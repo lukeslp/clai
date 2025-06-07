@@ -69,8 +69,6 @@ Then type natural language commands:
 - `model llama2` - Switch to different model
 - `history` - Show command history
 - `clear` - Clear the screen
-- `history` - Show command history
-- `clear` - Clear the screen
 - `quit` - Exit the application
 
 ## 📱 Narrow Terminal Support
@@ -115,6 +113,8 @@ Llamaline uses the Rich library for comprehensive styling and interactivity:
 
 ### Responsive Design
 All UI elements automatically adapt to your terminal size, ensuring a great experience whether you're using a mobile SSH client or a full-screen terminal.
+
+📖 **For complete details on narrow terminal support, see the [Narrow Terminal Support Guide](docs/narrow-terminal-support.md).**
 
 ## 🎯 Example Sessions
 
@@ -213,6 +213,15 @@ llamaline/
 - Follow accessibility best practices
 - Include tests for new features
 - Update documentation as needed
+
+## 📚 Documentation
+
+Comprehensive documentation is available in the `docs/` directory:
+
+- **[Documentation Index](docs/README.md)** - Complete guide to all documentation
+- **[Narrow Terminal Support](docs/narrow-terminal-support.md)** - Responsive design and rich styling features
+- **[Development Scripts](scripts/README.md)** - Build and release automation
+- **[Project Plan](PROJECT_PLAN.md)** - Technical roadmap and architecture
 
 ## 🔒 Safety & Security
 
