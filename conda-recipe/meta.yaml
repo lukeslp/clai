@@ -3,7 +3,8 @@ package:
   version: "1.0.2"
 
 source:
-  path: ..
+  url: https://files.pythonhosted.org/packages/source/l/llamaline/llamaline-1.0.2.tar.gz
+  sha256: 7ba8d961750215fcefba7e9fd749afd7406e94fa01054810eb4986591671cf48
 
 build:
   noarch: python
@@ -16,11 +17,18 @@ requirements:
   host:
     - python >=3.7
     - pip
+    - setuptools
   run:
     - python >=3.7
     - colorama
     - rich
     - requests
+
+test:
+  imports:
+    - llamaline
+  commands:
+    - llamaline --help
 
 about:
   home: https://github.com/lukeslp/llamaline
