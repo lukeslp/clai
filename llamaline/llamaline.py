@@ -67,16 +67,120 @@ DEFAULT_ENDPOINT = os.environ.get('OLLAMA_ENDPOINT', 'http://localhost:11434')
 DEFAULT_MODEL    = os.environ.get('OLLAMA_MODEL',  'gemma3:4b')
 
 # -----------------------------------------------------------------------------
-# Cheat-sheet shortcuts for common tasks
+# Cheat-sheet shortcuts for common tasks (broadly useful, non-niche, enriched)
 # -----------------------------------------------------------------------------
 CHEAT_SHEETS: Dict[str, Dict[str, str]] = {
-    "disk usage":         {"tool": "bash",   "code": "df -h", "desc": "Show disk space usage"},
-    "list files":         {"tool": "bash",   "code": "ls -al", "desc": "List all files with details"},
-    "memory usage":       {"tool": "bash",   "code": "vm_stat", "desc": "Show memory statistics"},
-    "running processes":  {"tool": "bash",   "code": "ps aux", "desc": "List all running processes"},
-    "network ports":      {"tool": "bash",   "code": "lsof -i -P -n | grep LISTEN", "desc": "Show listening network ports"},
-    "current directory":  {"tool": "bash",   "code": "pwd", "desc": "Print working directory"},
-    "say hello":          {"tool": "python", "code": "print('Hello, world!')", "desc": "Simple Python greeting"},
+    "disk usage": {
+        "tool": "bash",
+        "code": "df -h",
+        "desc": "Show disk space usage"
+    },
+    "find large files": {
+        "tool": "bash",
+        "code": "du -ah . | sort -rh | head -n 20",
+        "desc": "Top 20 largest files/dirs"
+    },
+    "memory usage": {
+        "tool": "bash",
+        "code": "vm_stat",
+        "desc": "Show memory statistics"
+    },
+    "lines of code": {
+        "tool": "bash",
+        "code": "find . -name '*.py' -not -path '*/venv/*' | xargs wc -l | sort -n",
+        "desc": "Count lines in Python files"
+    },
+    "running processes": {
+        "tool": "bash",
+        "code": "ps aux --sort -rss | head",
+        "desc": "Top memory-hungry processes"
+    },
+    "systemd services": {
+        "tool": "bash",
+        "code": "systemctl list-units --type=service --state=running",
+        "desc": "Show running systemd services"
+    },
+    "network ports": {
+        "tool": "bash",
+        "code": "lsof -i -P -n | grep LISTEN",
+        "desc": "Show listening network ports"
+    },
+    "docker containers": {
+        "tool": "bash",
+        "code": "docker ps --format '{{.Names}}\\t{{.Status}}'",
+        "desc": "List running Docker containers"
+    },
+    "tail logs": {
+        "tool": "bash",
+        "code": "tail -n 100 -f /var/log/syslog",
+        "desc": "Live-tail system log"
+    },
+    "quick webserver": {
+        "tool": "bash",
+        "code": "python3 -m http.server 8000",
+        "desc": "Serve current dir on port 8000"
+    },
+    "git status": {
+        "tool": "bash",
+        "code": "git status -sb",
+        "desc": "Compact Git status"
+    },
+    "git sync": {
+        "tool": "bash",
+        "code": "git pull --ff-only && git push",
+        "desc": "Pull then push current branch"
+    },
+    "current directory": {
+        "tool": "bash",
+        "code": "pwd",
+        "desc": "Print working directory"
+    },
+    "search TODO": {
+        "tool": "bash",
+        "code": "grep -Rin 'TODO' --exclude-dir=.git .",
+        "desc": "Find TODO comments recursively"
+    },
+    "say hello": {
+        "tool": "python",
+        "code": "print('Hello, world!')",
+        "desc": "Simple Python greeting"
+    },
+    "json pretty": {
+        "tool": "python",
+        "code": "import json, sys; print(json.dumps(json.load(sys.stdin), indent=2))",
+        "desc": "Pretty-print JSON from stdin"
+    },
+    "http get": {
+        "tool": "python",
+        "code": "import requests, pprint; pprint.pp(requests.get('https://api.github.com').json())",
+        "desc": "Fetch & print GitHub API JSON"
+    },
+    # Enriched with five more broadly useful commands:
+    "list open files": {
+        "tool": "bash",
+        "code": "lsof | head -20",
+        "desc": "Show first 20 open files"
+    },
+    "check internet": {
+        "tool": "bash",
+        "code": "ping -c 4 8.8.8.8",
+        "desc": "Test internet connectivity"
+    },
+    "python version": {
+        "tool": "python",
+        "code": "import sys; print(sys.version)",
+        "desc": "Show Python version"
+    },
+    "show date": {
+        "tool": "bash",
+        "code": "date",
+        "desc": "Show current date and time"
+    },
+    "find text": {
+        "tool": "bash",
+        "code": "grep -r 'search_term' .",
+        "desc": "Find text in files recursively"
+    }
 }
 
 # -----------------------------------------------------------------------------
